@@ -1,19 +1,21 @@
-import React from 'react'
-import {AiOutlineMenu, AiOutlineSearch, AiOutlineClose,AiFillTag} from 'react-icons/ai'
+import React, { useState } from 'react'
+import {AiOutlineMenu, AiOutlineSearch, AiOutlineClose,AiFillTag } from 'react-icons/ai'
+import {BsFillCartFill} from 'react-icons/bs'
 
 const TopNav = () => {
+  const [sideNav, setSideNav]= useState(false)
   return (
     <div className='max-w-[1620px] mx-auto flex justify-between items-center p-3'>
           <div className='flex items-center'>
-            <div className='cursor-pointer'>
+            <div onClick={()=> setSideNav(!sideNav)} className='cursor-pointer'>
                 <AiOutlineMenu size={25}/>
             </div>
               <h1 className='text-2xl sm:text-3xl lg:text-4xl px-2'>
                 yummy
-                <span>Eats</span>
+                <span className='text-red-700'>Eats</span>
               </h1>
               <div className='hidden lg:flex items-center whitespace-nowrap bg-gray-200 rounded-full p-1 text-[14px]'>
-                <p className='bg-orange-700 text-white rounded-full p-2 text-bold'>Free</p>
+                <p className='bg-red-700 text-white rounded-full p-2 text-bold'>Free</p>
                 <p className='p-2 text-bold'>Delivery</p> 
               </div>
             </div>
@@ -24,9 +26,22 @@ const TopNav = () => {
                   placeholder='search meal'
                 />
               </div>
-              <button className='bg-orange-700 text-white hidden rounded-full md:flex items-center p-2 '>
-                Cart
+              <button className='bg-red-700 text-white hidden rounded-full md:flex items-center p-2 '>
+                <BsFillCartFill size={20}/>Cart
                 </button>
+                {
+                sideNav ? ( <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0'></div>) :
+                ("")
+                }
+
+                <div className= {sideNav ? "fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300"
+                :"fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"}>
+
+                  <AiOutlineClose onClick={() => setSideNav(!sideNav)} size={25}
+                  className='absolute right-4 top-4 cursor-pointer'/>
+                  <h2 className='text-2xl p-4'>yummy<span className='text-red-700 font-bold'>Eats</span></h2>
+              </div>
+             
     </div>
   )
 }
