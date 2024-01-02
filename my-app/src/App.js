@@ -1,7 +1,7 @@
 import Delivery from "./components/Delivery";
 import Featured from "./components/Featured";
 import TopNav from "./components/TopNav";
-
+import Toppicks from "./components/Toppicks";
 
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
       <TopNav/>
       <Featured/>
       <Delivery/>
+      <Toppicks/>
     </div>
   );
 }
