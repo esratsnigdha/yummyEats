@@ -33,11 +33,7 @@ const Toppicks = () => {
 
                     </div>
                     </SplideSlide>
-
-
-                )
-            }
-            )
+                 )})
         }
         </Splide>
     </div>
